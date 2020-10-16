@@ -26,7 +26,7 @@ export default function useFetch(url, defaultResponse, reloadData) {
     
     loadData()
     
-    return () => signal.abort()
+    return () => controller.abort()
   }, [reloadData])
   
   return data
