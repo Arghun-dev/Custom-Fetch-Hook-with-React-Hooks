@@ -79,7 +79,7 @@ export const usePost = ({ url, payload, Reload }) => {
 
 **`delete` and `put` methods are exactly like `post`**
 
-### Using Them in component
+### Using Them inside component
 
 
 **useFetch.js**
@@ -90,9 +90,30 @@ export const usePost = ({ url, payload, Reload }) => {
 ```
 
 
+
+
+To access `branches` inside your component you have to use `optional chaining` `(?.)` because actually you call `web service` outside of it's function. just like below:
+
+```js
+{branches?.data?.data?.lists.map(item =>
+    <Select.Option value={item.ID}>{item.Title}</Select.Option>
+)}
+```
+
+
+
+
 **usePost.js**
 
 ```js
     // createRoute
     const [res, createRoute] = usePost({ url: API.ROUTE_CREATE, payload: createRoutePayload, Reload })
+```
+
+You can access `response` of your action call using `res` which extracted from `usePost` function
+
+and you have to call `createRoute` function extracted from `usePost` just like below:
+
+```js
+<button onClick={() => createRoute()}>call function</button>
 ```
