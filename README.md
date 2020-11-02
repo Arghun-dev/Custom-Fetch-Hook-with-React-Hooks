@@ -76,3 +76,23 @@ export const usePost = ({ url, payload, Reload }) => {
     return [res, callAPI];
 }
 ```
+
+**`delete` and `put` methods are exactly like `post`**
+
+### Using Them in component
+
+
+**useFetch.js**
+
+```js
+    // get branches
+    const branches = useFetch(`${API.USER_ACCESS_OBJECT_LISTS}?UserId=${userId}&ObjectTypeId=4&ObjectAccessType=0`, { isLoading: true, data: null }, reload)
+```
+
+
+**usePost.js**
+
+```js
+    // createRoute
+    const [res, createRoute] = usePost({ url: API.ROUTE_CREATE, payload: createRoutePayload, Reload })
+```
