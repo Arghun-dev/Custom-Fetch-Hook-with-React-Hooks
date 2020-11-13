@@ -95,6 +95,12 @@ export const usePost = ({ url, payload, Reload }) => {
 To access `branches` inside your component you have to use `optional chaining` `(?.)` because actually you call `web service` outside of it's function. just like below:
 
 ```js
+const branches = useFetch(`${API.USER_ACCESS_OBJECT_LISTS}?UserId=${userId}&ObjectTypeId=4&ObjectAccessType=0`, { isLoading: true, data: null }, reload)
+
+if (!branches.data || branches.isLoading) {
+    return <div>loading...</div>
+}
+
 {branches?.data?.data?.lists.map(item =>
     <Select.Option value={item.ID}>{item.Title}</Select.Option>
 )}
